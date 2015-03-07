@@ -22,7 +22,7 @@ class UsersController extends AppController {
 				$this->Auth->setUser($user);
 				return $this->redirect($this->Auth->redirectUrl());
 			}
-			$this->Flasn->error(__('Invalid username or password'));
+			$this->Flash->error(__('Invalid username or password'));
 		}
 	}
 

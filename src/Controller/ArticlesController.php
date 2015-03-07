@@ -27,7 +27,8 @@ class ArticlesController extends AppController {
 	}
 
 	public function index() {
-		$articles = $this->Articles->find('all');
+//TODO: select only what is needed, set recursion to -1
+		//$articles = $this->Articles->find('all');
 		$this->set('articles', $this->Articles->find('all'));
 	}
 
