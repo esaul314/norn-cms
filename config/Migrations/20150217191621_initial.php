@@ -17,6 +17,8 @@ class Initial extends AbstractMigration
 		$articles->addColumn('title', 'string', ['limit' => 50])
 			->addColumn('body', 'text', ['null' => true, 'default' => null])
 			->addColumn('category_id', 'integer', ['null' => true, 'default' => null])
+			->addColumn('article_status_id', 'integer', ['null' => false, 'default' => 0])
+			->addColumn('article_type_id', 'integer', ['null' => false, 'default' => 0])
 			->addColumn('created', 'datetime')
 			->addColumn('modified', 'datetime', ['null' => true, 'default' => null])
 			->save();

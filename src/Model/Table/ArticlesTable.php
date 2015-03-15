@@ -9,9 +9,16 @@ class ArticlesTable extends Table {
 
 	public function initialize(array $config) {
 		$this->addBehavior('Timestamp');
-		$this->belongsTo('Categories', [
-			'foreign_key' => 'category_id'
+		$this->addAssociations([
+			'belongsTo' => [
+				'Categories',
+				'ArticleStatuses',
+				'ArticleTypes'
+			]
 		]);
+		//$this->belongsTo('Categories', [
+			//'foreign_key' => 'category_id'
+		//]);
 	}
 
 	public function validationDefault(Validator $validator) {
