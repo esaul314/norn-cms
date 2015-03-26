@@ -30,52 +30,38 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<?php //echo $this->Html->meta('icon'); ?>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Coustard:400,900">
 
 		<?php echo $this->fetch('meta'); ?>
 		<?php echo $this->fetch('css'); ?>
 		<?php echo $this->Html->css('bootstrap.min.css'); ?>
 		<style>
 			body {
-				padding-top: 50px;
+/*				padding-top: 50px;
 				padding-bottom: 20px;
-			}
+*/			}
 		</style>
 		<?php echo $this->Html->css(['bootstrap-theme.min.css', 'main.css']); ?>
+		<?php //echo $this->Html->css(['main.css']); ?>
 		<?= $this->fetch('script') ?>
 	</head>
-
 	<body>
 		<!--[if lt IE 8]>
 			<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
+	<div class="outer">
 	<?php //echo $this->element('navbar'); ?>
-	<?php echo $this->element('jumbotron'); ?>
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-      </div>
+	<?php //echo $this->element('jumbotron'); ?>
+	<div class="container">
 		<?php echo $this->fetch('content'); ?>
       <hr>
 
       <footer>
-        <p>&copy; Company 2015</p>
+	  <p>&copy; <?= COMPANY . " " . date('Y') ?> </p>
       </footer>
-    </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	</div> <!-- /container -->
+	</div>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
         <script src="js/vendor/bootstrap.min.js"></script>

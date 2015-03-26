@@ -97,6 +97,7 @@ mb_internal_encoding(Configure::read('App.encoding'));
  * formatted and sets the default language to use for translations.
  */
 ini_set('intl.default_locale', 'en_US');
+//ini_set('intl.default_locale', 'es_MX');
 
 /**
  * Register application error and exception handlers.
@@ -193,3 +194,10 @@ if (Configure::read('debug')) {
 DispatcherFactory::add('Asset');
 DispatcherFactory::add('Routing');
 DispatcherFactory::add('ControllerFactory');
+
+define('COMPANY', 'Iniciativa Meouchi');
+
+
+define('ACTIVE', 1);
+define('INACTIVE', 2);
+Plugin::load('Bootstrap3');

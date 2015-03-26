@@ -6,6 +6,7 @@
     echo $this->Form->input('body', ['rows' => '3']);
     echo $this->Form->input('article_type_id');
     echo $this->Form->input('article_status_id');
+    echo $this->Form->input('article.article_statuses.id');
     echo $this->Form->button(__('Save Article'));
     echo $this->Form->end();
 ?>

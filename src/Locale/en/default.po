@@ -1,0 +1,219 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-03-26 01:22+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/ArticlesController.php:52
+msgid "Invalid article"
+msgstr ""
+
+#: Controller/ArticlesController.php:63
+msgid "Your article has been saved"
+msgstr ""
+
+#: Controller/ArticlesController.php:66
+msgid "Unable to add article"
+msgstr ""
+
+#: Controller/ArticlesController.php:77
+msgid "No article"
+msgstr ""
+
+#: Controller/ArticlesController.php:87
+msgid "Article updated"
+msgstr ""
+
+#: Controller/ArticlesController.php:90
+msgid "Unable to update your article"
+msgstr ""
+
+#: Controller/ArticlesController.php:104
+msgid "The article with it {0} has been deleted"
+msgstr ""
+
+#: Controller/UsersController.php:25
+msgid "Invalid username or password"
+msgstr ""
+
+#: Controller/UsersController.php:42
+msgid "Invalid User"
+msgstr ""
+
+#: Controller/UsersController.php:53
+msgid "User saved"
+msgstr ""
+
+#: Controller/UsersController.php:56
+msgid "User not added"
+msgstr ""
+
+#: Template/Articles/add.ctp:10
+#: Template/Articles/edit.ctp:9
+msgid "Save Article"
+msgstr ""
+
+#: Template/Articles/index.ctp:10
+#: Template/Element/featured.ctp:16
+msgid "Read Full Article"
+msgstr ""
+
+#: Template/Categories/add.ctp:2
+#: Template/Categories/edit.ctp:2
+#: Template/Categories/index.ctp:2;18
+#: Template/Categories/view.ctp:2
+msgid "Actions"
+msgstr ""
+
+#: Template/Categories/add.ctp:4
+#: Template/Categories/edit.ctp:10
+#: Template/Categories/view.ctp:6
+msgid "List Categories"
+msgstr ""
+
+#: Template/Categories/add.ctp:10
+msgid "Add Category"
+msgstr ""
+
+#: Template/Categories/add.ctp:17
+#: Template/Categories/edit.ctp:23
+#: Template/Users/add.ctp:11
+msgid "Submit"
+msgstr ""
+
+#: Template/Categories/edit.ctp:5
+#: Template/Categories/index.ctp:34
+msgid "Delete"
+msgstr ""
+
+#: Template/Categories/edit.ctp:7
+#: Template/Categories/index.ctp:34
+#: Template/Categories/view.ctp:5
+msgid "Are you sure you want to delete # {0}?"
+msgstr ""
+
+#: Template/Categories/edit.ctp:16
+#: Template/Categories/view.ctp:4
+msgid "Edit Category"
+msgstr ""
+
+#: Template/Categories/index.ctp:4
+#: Template/Categories/view.ctp:7
+msgid "New Category"
+msgstr ""
+
+#: Template/Categories/index.ctp:32
+msgid "View"
+msgstr ""
+
+#: Template/Categories/index.ctp:33
+msgid "Edit"
+msgstr ""
+
+#: Template/Categories/index.ctp:35
+msgid "Move down"
+msgstr ""
+
+#: Template/Categories/index.ctp:35
+msgid "Moving down #{0}?"
+msgstr ""
+
+#: Template/Categories/index.ctp:36
+msgid "Move up"
+msgstr ""
+
+#: Template/Categories/index.ctp:36
+msgid "Moving up #{0}?"
+msgstr ""
+
+#: Template/Categories/index.ctp:45
+msgid "previous"
+msgstr ""
+
+#: Template/Categories/index.ctp:47
+msgid "next"
+msgstr ""
+
+#: Template/Categories/view.ctp:5
+msgid "Delete Category"
+msgstr ""
+
+#: Template/Categories/view.ctp:14
+msgid "Name"
+msgstr ""
+
+#: Template/Categories/view.ctp:16
+msgid "Description"
+msgstr ""
+
+#: Template/Categories/view.ctp:20
+msgid "Id"
+msgstr ""
+
+#: Template/Categories/view.ctp:22
+msgid "Parent Id"
+msgstr ""
+
+#: Template/Categories/view.ctp:24
+msgid "Lft"
+msgstr ""
+
+#: Template/Categories/view.ctp:26
+msgid "Rght"
+msgstr ""
+
+#: Template/Categories/view.ctp:30
+msgid "Created"
+msgstr ""
+
+#: Template/Categories/view.ctp:32
+msgid "Modified"
+msgstr ""
+
+#: Template/Element/jumbotron.ctp:4
+msgid "Iniciativa Meouchi"
+msgstr ""
+
+#: Template/Element/jumbotron.ctp:6
+msgid "Well done, you good and faithful servant: you have been faithful over a few things, I will make you ruler over many things: enter you into the joy of your lord."
+msgstr ""
+
+#: Template/Element/jumbotron.ctp:7
+msgid "Matthew 25:21"
+msgstr ""
+
+#: Template/Users/add.ctp:4
+msgid "Add User"
+msgstr ""
+
+#: Template/Users/login.ctp:5
+msgid "Please enter your username and password"
+msgstr ""
+
+#: Template/Users/login.ctp:9
+msgid "Login"
+msgstr ""
+
+#: Template/Error/error400.ctp:33
+#: Template/Error/error500.ctp:35
+msgid "Error"
+msgstr ""
+
+#: Template/Error/error400.ctp:35
+msgid "The requested address %s was not found on this server."
+msgstr ""
+
+#: Template/Error/error500.ctp:33
+msgid "An Internal Error Has Occurred"
+msgstr ""
+

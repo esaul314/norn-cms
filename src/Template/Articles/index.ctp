@@ -1,32 +1,16 @@
-<h1>Blog articles</h1>
-<p><?= $this->Html->link('Add Article', ['action' => 'add']) ?></p>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Created</th>
-		<th>Actions</th>
-    </tr>
-
-    <!-- Here is where we iterate through our $articles query object, printing out article info -->
-
-    <?php foreach ($articles as $article): ?>
-    <tr>
-        <td><?= $article->id ?></td>
-        <td>
-            <?= $this->Html->link($article->title, ['action' => 'view', $article->id]) ?>
-        </td>
-        <td>
-            <?= $article->created->format(DATE_RFC850) ?>
-        </td>
-        <td>
-		 <?= $this->Form->postLink(
-			'Delete',
-			['action' => 'delete', $article->id],
-			['confirm' => 'Are you sure?'])
-		?>
-		<?= $this->Html->link('Edit', ['action' => 'edit', $article->id]) ?>
-		</td>
-	</tr>
-		<?php endforeach; ?>
-</table>
+<?php echo $this->element('jumbotron'); ?>
+<hr />
+<?php echo $this->element('featured', ['featured' => $featured]); ?>
+<div class="container-fluid">
+	<?php foreach ($articles as $key => $article): ?>
+<hr />
+	<div class="row post">
+		<h2><?php echo $article['title']; ?></h2>
+		<p><?php echo $this->Text->truncate($this->Markdown->transform($article['body']), 3000, ['exact' => false]); ?></p>
+		<p><a class="btn btn-default" href="<?php echo $this->Url->build(['controller' => 'Articles', 'action' => 'view', $article['id']]); ?>" role="button"><?php echo __('Read Full Article');?> &raquo;</a></p>
+	</div>
+	<?php endforeach; ?>
+</div>
+<?php if ($user) : ?>
+	<p><?= $this->Html->link('Add Article', ['action' => 'add']) ?></p>
+<?php endif; ?>

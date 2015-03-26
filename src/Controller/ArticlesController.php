@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use Cake\Network\Exception\NotFoundException;
+use Cake\Utility\Hash;
 
 class ArticlesController extends AppController {
+
+	public $helpers = ['Tanuck/Markdown.Markdown'];
 
 	public function initialize() {
 		parent::initialize();
@@ -27,9 +30,21 @@ class ArticlesController extends AppController {
 	}
 
 	public function index() {
-//TODO: select only what is needed, set recursion to -1
-		//$articles = $this->Articles->find('all');
-		$this->set('articles', $this->Articles->find('all'));
+		$articlesRes = $this->Articles->find('all')
+			->where(['Articles.article_status_id' => ACTIVE])
+			->toArray();
+		$articles = array();
+		foreach ($articlesRes as $key => $article) {
+			if (is_object($article)) {
+				$articlesRes[$key] = $article->toArray();
+			}
+			$articles[$articlesRes[$key]['id']] = $articlesRes[$key];
+		}
+		$featured = Hash::extract($articles, '{n}[article_type_id=2]');
+		array_splice($featured, 3);
+		$this->loadComponent('Util');
+		$articles = $this->Util->arrayDiff($articles, $featured);
+		$this->set(compact('articles', 'featured'));
 	}
 
 	public function view($id = null) {
@@ -52,7 +67,9 @@ class ArticlesController extends AppController {
 		}
 		$this->set('article', $article);
 		$categories = $this->Articles->Categories->find('treelist');
-		$this->set(compact('categories'));
+		$articleStatuses = $this->Articles->ArticleStatuses->find('list')->toArray();
+		$articleTypes = $this->Articles->ArticleTypes->find('list')->toArray();
+		$this->set(compact('categories', 'articleStatuses', 'articleTypes'));
 	}
 
 	public function edit($id = null) {
@@ -61,6 +78,9 @@ class ArticlesController extends AppController {
 		}
 
 		$article = $this->Articles->get($id);
+		//$this->Articles->id = $id;
+		//$article = $this->Articles->find('first')->where(['Articles.id' => $id])->contain(['ArticleTypes', 'ArticleStatuses']);
+		//$article = $this->Articles->get($id, ['contain' => ['ArticleTypes', 'ArticleStatuses']]);
 		if ($this->request->is(['post', 'put'])) {
 			$this->Articles->patchEntity($article, $this->request->data);
 			if ($this->Articles->save($article)) {
@@ -71,7 +91,9 @@ class ArticlesController extends AppController {
 		}
 		$this->set('article', $article);
 		$categories = $this->Articles->Categories->find('treelist');
-		$this->set(compact('categories'));
+		$articleStatuses = $this->Articles->ArticleStatuses->find('list')->toArray();
+		$articleTypes = $this->Articles->ArticleTypes->find('list')->toArray();
+		$this->set(compact('categories', 'articleStatuses', 'articleTypes'));
 	}
 
 	public function delete($id) {

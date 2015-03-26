@@ -55,6 +55,7 @@ class AppController extends Controller
 
 		$this->Auth->allow(['index', 'view', 'display']);
 		$this->layout = "bootstrap";
+		$this->set('user', $this->Auth->user());
 	}
 
 	public function isAuthorized($user) {
@@ -64,4 +65,19 @@ class AppController extends Controller
 		}
 		return false;
 	}
+
+	public $helpers = [
+		'Html' => [
+			'className' => 'Bootstrap3.BootstrapHtml'
+    ],
+    'Form' => [
+        'className' => 'Bootstrap3.BootstrapForm'
+    ],
+    'Paginator' => [
+        'className' => 'Bootstrap3.BootstrapPaginator'
+    ],
+		'Modal' => [
+			'className' => 'Bootstrap3.BootstrapModal'
+		]
+	];
 }
