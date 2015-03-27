@@ -46,9 +46,11 @@ class UsersController extends AppController {
 	}
 
 	public function add() {
-
 		$user = $this->Users->newEntity($this->request->data);
 		if ($this->request->is('post')) {
+			if (!($role = $this->Auth->user('role')) || $role != 'admin') {
+				$this->request->data['role'] = 'author';
+			}
 			if ($this->Users->save($user)) {
 				$this->Flash->success(__('User saved'));
 				return $this->redirect(['action' => 'add']);
