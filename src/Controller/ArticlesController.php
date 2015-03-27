@@ -15,9 +15,8 @@ class ArticlesController extends AppController {
 	}
 
 	public function isAuthorized($user) {
-
-		if ($this->request->action == 'add' && $user['role'] == 'admin') {
-			return true;
+		if ($this->request->action == 'add' && $user['role'] != 'admin') {
+			return false;
 		}
 
 		if (in_array($this->request->action, ['edit', 'delete'])) {
