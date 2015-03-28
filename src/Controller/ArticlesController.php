@@ -57,7 +57,10 @@ class ArticlesController extends AppController {
 	public function add() {
 		$article = $this->Articles->newEntity();
 		if ($this->request->is('post')) {
-			$article = $this->Articles->patchEntity($article, array_merge($this->request->data, ['user_id' => $this->Auth->user('id')]));
+			$article = $this->Articles->patchEntity($article, array_merge($this->request->data, [
+				'user_id' => $this->Auth->user('id'),
+				'slug' => $this->Articles->slug(empty($this->request->data['slug']) ? $this->request->data['title'] : $this->request->data['slug'])
+			]));
 			if ($this->Articles->save($article)) {
 				$this->Flash->success(__('Your article has been saved'));
 				return $this->redirect(['action' => 'index']);
@@ -77,11 +80,10 @@ class ArticlesController extends AppController {
 		}
 
 		$article = $this->Articles->get($id);
-		//$this->Articles->id = $id;
-		//$article = $this->Articles->find('first')->where(['Articles.id' => $id])->contain(['ArticleTypes', 'ArticleStatuses']);
-		//$article = $this->Articles->get($id, ['contain' => ['ArticleTypes', 'ArticleStatuses']]);
 		if ($this->request->is(['post', 'put'])) {
-			$this->Articles->patchEntity($article, $this->request->data);
+			$this->Articles->patchEntity($article, array_merge($this->request->data, [
+				'slug' => $this->Articles->slug(empty($this->request->data['slug']) ? $this->request->data['title'] : $this->request->data['slug'])
+			]));
 			if ($this->Articles->save($article)) {
 				$this->Flash->success(__('Article updated'));
 				return $this->redirect(['action' => 'index']);

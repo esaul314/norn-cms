@@ -9,6 +9,7 @@ class ArticlesTable extends Table {
 
 	public function initialize(array $config) {
 		$this->addBehavior('Timestamp');
+		$this->addBehavior('Sluggable');
 		$this->addAssociations([
 			'belongsTo' => [
 				'Categories',
