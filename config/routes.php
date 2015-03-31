@@ -39,7 +39,8 @@ use Cake\Routing\Router;
  * `:action` markers.
  *
  */
-Router::defaultRouteClass('Route');
+Router::defaultRouteClass('EntityRoute');
+//Router::defaultRouteClass('Route');
 
 Router::scope('/', function ($routes) {
     /**
@@ -51,6 +52,8 @@ Router::scope('/', function ($routes) {
 	$routes->connect('/', ['controller' => 'Articles', 'action' => 'index']);
 	$routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
 	$routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
+	$routes->connect('/articulos/:slug', ['controller' => 'Articles', 'action' => 'view'], ['_name' => 'articlesView', 'routeClass' => 'EntityRoute', 'pass' => ['slug']]);
+	$routes->connect('/sobre/:slug', ['controller' => 'Articles', 'action' => 'view'], ['_name' => 'coreLinks', 'routeClass' => 'EntityRoute', 'pass' => ['slug']]);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.

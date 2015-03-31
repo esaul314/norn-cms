@@ -53,6 +53,7 @@ class AppController extends Controller
 
 	public function beforeFilter(Event $event) {
 
+		parent::beforeFilter($event);
 		$this->Auth->allow(['index', 'view', 'display']);
 		$this->layout = "bootstrap";
 		$this->set('user', $this->Auth->user());

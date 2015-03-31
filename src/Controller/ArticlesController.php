@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Cake\Network\Exception\NotFoundException;
 use Cake\Utility\Hash;
+use Cake\Event\Event;
 
 class ArticlesController extends AppController {
 
@@ -28,9 +29,24 @@ class ArticlesController extends AppController {
 		return parent::isAuthorized($user);
 	}
 
+	public function beforeFilter(Event $event) {
+		parent::beforeFilter($event);
+		if (in_array($this->request->params['action'], ['index'])) {
+			$aboutUs = $this->Articles->find('all', [
+				'fields' => ['title', 'slug'],
+				'conditions' => ['SystemPages.name' => 'aboutUs'],
+				'contain' => ['SystemPages']
+				])
+				->first()
+				->toArray();
+			//debug($aboutUs);
+			$this->set('aboutUs', $aboutUs);
+		}
+	}
+
 	public function index() {
 		$articlesRes = $this->Articles->find('all')
-			->where(['Articles.article_status_id' => ACTIVE])
+			->where(['Articles.article_status_id' => ARTICLE_STATUS_ACTIVE, 'Articles.article_type_id !=' => ARTICLE_TYPE_SYSTEM])
 			->toArray();
 		$articles = array();
 		foreach ($articlesRes as $key => $article) {
@@ -50,17 +66,16 @@ class ArticlesController extends AppController {
 		if (!$id) {
 			throw new NotFoundException(__('Invalid article'));
 		}
-		$article = $this->Articles->get($id);
+		//$article = $this->Articles->get($id);
+		$article = $this->Articles->find('slug', ['slug' => $id])->first();
 		$this->set(compact('article'));
 	}
 
 	public function add() {
 		$article = $this->Articles->newEntity();
 		if ($this->request->is('post')) {
-			$article = $this->Articles->patchEntity($article, array_merge($this->request->data, [
-				'user_id' => $this->Auth->user('id'),
-				'slug' => $this->Articles->slug(empty($this->request->data['slug']) ? $this->request->data['title'] : $this->request->data['slug'])
-			]));
+			$article = $this->Articles->patchEntity($article, array_merge($this->request->data, ['user_id' => $this->Auth->user('id')]));
+			$this->Articles->slug($article);
 			if ($this->Articles->save($article)) {
 				$this->Flash->success(__('Your article has been saved'));
 				return $this->redirect(['action' => 'index']);
@@ -81,9 +96,8 @@ class ArticlesController extends AppController {
 
 		$article = $this->Articles->get($id);
 		if ($this->request->is(['post', 'put'])) {
-			$this->Articles->patchEntity($article, array_merge($this->request->data, [
-				'slug' => $this->Articles->slug(empty($this->request->data['slug']) ? $this->request->data['title'] : $this->request->data['slug'])
-			]));
+			$this->Articles->patchEntity($article, $this->request->data);
+			$this->Articles->slug($article);
 			if ($this->Articles->save($article)) {
 				$this->Flash->success(__('Article updated'));
 				return $this->redirect(['action' => 'index']);

@@ -13,7 +13,7 @@
 		<?php endforeach; ?>
 <?php foreach ($keys as $key): ?>
 		<div class="col-md-4">
-			<p><a class="btn btn-default" href="<?php echo $this->Url->build(['controller' => 'Articles', 'action' => 'view', $featured[$key]['id']]); ?>" role="button"><?php echo __('Read Full Article');?> &raquo;</a></p>
+			<p><a class="btn btn-default" href="<?php echo $this->Url->build(['_name' => 'articlesView', 'slug' => $featured[$key]['slug']]); ?>" role="button"><?php echo __('Read Full Article');?> &raquo;</a></p>
 		</div>
 <?php endforeach; ?>
 	</div>

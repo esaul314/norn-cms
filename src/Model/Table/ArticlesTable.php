@@ -15,6 +15,9 @@ class ArticlesTable extends Table {
 				'Categories',
 				'ArticleStatuses',
 				'ArticleTypes'
+			],
+			'hasOne' => [
+				'SystemPages'
 			]
 		]);
 		//$this->belongsTo('Categories', [

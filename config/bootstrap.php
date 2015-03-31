@@ -198,6 +198,7 @@ DispatcherFactory::add('ControllerFactory');
 define('COMPANY', 'Iniciativa Meouchi');
 
 
-define('ACTIVE', 1);
-define('INACTIVE', 2);
+define('ARTICLE_STATUS_ACTIVE', 1);
+define('ARTICLE_STATUS_INACTIVE', 2);
+define('ARTICLE_TYPE_SYSTEM', 4);
 Plugin::load('Bootstrap3');

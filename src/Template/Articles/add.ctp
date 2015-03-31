@@ -3,6 +3,7 @@
     echo $this->Form->create($article);
     echo $this->Form->input('categories');
     echo $this->Form->input('title');
+    echo $this->Form->input('slug');
     echo $this->Form->input('body', ['rows' => '3']);
     echo $this->Form->input('article_type_id');
     echo $this->Form->input('article_status_id');

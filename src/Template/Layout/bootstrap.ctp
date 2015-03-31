@@ -27,7 +27,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<title>
 			<?php //echo $title_for_layout; ?>
 		</title>
-		<?php //echo $this->Html->meta('icon'); ?>
+		<?php echo $this->Html->meta('icon'); ?>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Coustard:400,900">
@@ -42,7 +42,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 */			}
 		</style>
 		<?php echo $this->Html->css(['bootstrap-theme.min.css', 'main.css']); ?>
-		<?php //echo $this->Html->css(['main.css']); ?>
 		<?= $this->fetch('script') ?>
 	</head>
 	<body>
