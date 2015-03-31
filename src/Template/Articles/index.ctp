@@ -12,5 +12,5 @@
 	<?php endforeach; ?>
 </div>
 <?php if ($user) : ?>
-	<p><?= $this->Html->link('Add Article', ['action' => 'add']) ?></p>
+	<p><?= $this->Html->link(__('Add Article'), ['action' => 'add']) ?></p>
 <?php endif; ?>

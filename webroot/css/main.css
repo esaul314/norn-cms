@@ -65,3 +65,7 @@ p, .post {
 	font-variant: small-caps;
 	font-weight: bold;
 }*/
+
+.smaller-text {
+	font-size: 85%;
+}
