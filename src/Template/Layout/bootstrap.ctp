@@ -50,7 +50,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<![endif]-->
 	<div id="mainDrawer" class="drawer dw-xs-10 dw-sm-6 dw-md-4 fold" aria-labelledby="mainDrawer">
 		<div class="drawer-controls">
-			<a href="#mainDrawer" data-toggle="drawer" aria-foldedopen="false" aria-controls="mainDrawer" class="btn btn-default"><i class=""></i></a>
+			<a href="#mainDrawer" data-toggle="drawer" aria-foldedopen="false" aria-controls="mainDrawer" class="btn btn-default btn-lg height30"><i id="mainDrawerButton" class=""></i></a>
 		</div>
 		<div class="drawer-contents">
 			<div class="drawer-heading">
@@ -98,11 +98,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-2.1.3.min.js"><\/script>')</script>
 
-        <script src="js/vendor/bootstrap.min.js"></script>
-        <script src="js/vendor/drawer.js"></script>
+        <script src="/js/vendor/bootstrap.min.js"></script>
+        <script src="/js/vendor/drawer.js"></script>
 
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script src="/js/plugins.js"></script>
+        <script src="/js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

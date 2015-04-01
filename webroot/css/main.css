@@ -69,3 +69,19 @@ p, .post {
 .smaller-text {
 	font-size: 85%;
 }
+
+.height30 {
+	height: 30px;
+}
+
+#mainDrawerButton {
+	content: '';
+	display: block;
+	position: absolute;
+	height: 2px;
+	width: 24px;
+	background: #8d8d8d;
+	left: 15px;
+	top: 18px;
+	box-shadow: 0 6px 0 #8d8d8d, 0 12px 0 #8d8d8d;
+}
