@@ -39,7 +39,6 @@ class ArticlesController extends AppController {
 				])
 				->first()
 				->toArray();
-			//debug($aboutUs);
 			$this->set('aboutUs', $aboutUs);
 		}
 	}
