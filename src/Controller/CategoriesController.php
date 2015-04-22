@@ -19,7 +19,8 @@ class CategoriesController extends AppController
     public function index()
     {
 		$categories = $this->Categories->find('threaded')
-			->order(['lft' => 'ASC']);
+			->contain('ParentCategories')
+			->order(['Categories.lft' => 'ASC']);
 
 		$this->set(compact('categories'));
     }
