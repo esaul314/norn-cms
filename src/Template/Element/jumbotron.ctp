@@ -1,10 +1,10 @@
 	<div class="jumbotron">
 		<h1><?php
-			echo $this->Html->image('church_logo.png', ['alt' => 'Meouchi Initiative promotes virtues', 'height' => '100px', 'style' => 'padding-left: 20px']);
-			echo __('Iniciativa Meouchi');
+			echo $this->Html->image(COMPANY_LOGO, ['alt' => COMPANY_LOGO_TEXT, 'height' => '100px', 'style' => 'padding-left: 20px']);
+			echo __(COMPANY);
 		?></h1>
-			<p><?php echo __("Well done, you good and faithful servant: you have been faithful over a few things, I will make you ruler over many things: enter you into the joy of your lord."); ?>
-				<div style="float: right;"><?php echo __("Matthew 25:21");?></div>
+			<p><?php echo __(COMPANY_SLOGAN); ?>
+				<div style="float: right;"><?php echo __(COMPANY_SLOGAN_2);?></div>
 			</p>
 				<?php if (isset($aboutUs) && !empty($aboutUs)) : ?>
 					<p>

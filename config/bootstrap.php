@@ -195,8 +195,11 @@ DispatcherFactory::add('Asset');
 DispatcherFactory::add('Routing');
 DispatcherFactory::add('ControllerFactory');
 
-define('COMPANY', 'Iniciativa Meouchi');
-
+define('COMPANY', 'Vivamus Libero');
+define('COMPANY_LOGO', 'logo.png');
+define('COMPANY_LOGO_TEXT', 'Quisque egestas efficitur magna, in congue velit congue semper.');
+define('COMPANY_SLOGAN', 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.');
+define('COMPANY_SLOGAN_2', 'Lorem Ipsum');
 
 define('ARTICLE_STATUS_ACTIVE', 1);
 define('ARTICLE_STATUS_INACTIVE', 2);
