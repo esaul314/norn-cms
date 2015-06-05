@@ -73,7 +73,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			</div>
 			<ul class="drawer-fullnav">
 				<li role="presentation"><a href="/sobre/publicaciones"><i class=""></i>&nbsp; Our Publications</a></li>
-				<li role="presentation"><a href="/sobre/prensa"><i class=""></i>&nbsp; Meouchi Initiative In the Press</a></li>
+				<li role="presentation"><a href="/sobre/prensa"><i class=""></i>&nbsp; <?php echo COMPANY;?> In the Press</a></li>
 				<li role="presentation"><a href="/sobre/eventos"><i class=""></i>&nbsp; Events</a></li>
 				<li><a name="">Story of the Day</a></li>
             </ul>
