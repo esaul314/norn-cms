@@ -67,7 +67,17 @@ class ArticlesController extends AppController {
 		}
 		//$article = $this->Articles->get($id);
 		$article = $this->Articles->find('slug', ['slug' => $id])->first();
-		$this->set(compact('article'));
+		//$related = $this->Articles->findByCategoryId($article->category_id, ['id !=' => $article->id])->first();
+		if ($article->category_id) {
+			$related = $this->Articles->find('all', [
+				'conditions' => [
+					'category_id' => $article->category_id,
+					'id !=' => $article->id]
+				])->first();
+		} else {
+			$related = array();
+		}
+		$this->set(compact('article', 'related'));
 	}
 
 	public function add() {

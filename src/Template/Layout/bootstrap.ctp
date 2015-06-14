@@ -1,21 +1,4 @@
-<?php
-/**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @since         0.10.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-
-$cakeDescription = 'CakePHP: the rapid development php framework';
-?>
-<!doctype html>
+<?php echo $this->Html->docType(); ?>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
@@ -28,7 +11,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			<?php //echo $title_for_layout; ?>
 		</title>
 		<?php echo $this->Html->meta('icon'); ?>
-		<meta name="description" content="">
+		<?php echo $this->Html->meta('description', ''); ?>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Coustard:400,900">
 
@@ -113,5 +96,5 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
-    </body>
+	</body>
 </html>
