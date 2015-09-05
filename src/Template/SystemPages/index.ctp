@@ -1,13 +1,15 @@
-<div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="side-nav">
-        <li><?= $this->Html->link(__('New System Page'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Articles'), ['controller' => 'Articles', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Article'), ['controller' => 'Articles', 'action' => 'add']) ?> </li>
-    </ul>
-</div>
-<div class="systemPages index large-10 medium-9 columns">
-    <table cellpadding="0" cellspacing="0">
+<div class="content indent">
+	<div class="container">
+		<h3><?= __('Actions') ?></h3>
+		<ul class="side-nav">
+			<li><?= $this->Html->link(__('New System Page'), ['action' => 'add']) ?></li>
+			<li><?= $this->Html->link(__('List Articles'), ['controller' => 'Articles', 'action' => 'index']) ?> </li>
+			<li><?= $this->Html->link(__('New Article'), ['controller' => 'Articles', 'action' => 'add']) ?> </li>
+		</ul>
+	</div>
+	<div class="container">
+		<div class="row">
+    <table class="table-striped table-hover">
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('id') ?></th>
@@ -46,4 +48,6 @@
         </ul>
         <p><?= $this->Paginator->counter() ?></p>
     </div>
+		</div>
+	</div>
 </div>

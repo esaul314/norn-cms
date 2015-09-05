@@ -17,7 +17,11 @@ class ArticlesTable extends Table {
 				'ArticleTypes'
 			],
 			'hasOne' => [
-				'SystemPages'
+				'SystemPages' => [
+					'className' => 'SystemPages',
+					//'conditions' => 'Articles.id = SystemPages.article_id',
+					'dependent' => true
+				]
 			]
 		]);
 		//$this->belongsTo('Categories', [

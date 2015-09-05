@@ -13,6 +13,10 @@ class UsersController extends AppController {
 		parent::beforeFilter($event);
 		//$this->Auth->allow('add', 'logout');
 		$this->Auth->allow('logout');
+
+		if (in_array($this->request->params['action'], ['login', 'view', 'add'])) {
+			$this->set('skipNav', true);
+		}
 	}
 
 	public function login() {
