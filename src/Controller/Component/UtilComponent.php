@@ -3,6 +3,7 @@
 namespace App\Controller\Component;
 
 use Cake\Controller\Component;
+use Cake\ORM\TableRegistry;
 
 class UtilComponent extends Component {
 
@@ -27,4 +28,31 @@ class UtilComponent extends Component {
 
 		return $diff;
 	}
+
+	public function navMenu($admin = false) {
+		$menu = [];
+		if ($admin) {
+			return [
+
+			];
+		}
+		$this->Articles = TableRegistry::get('Articles');
+		//TODO: clumsy query. redo it with RIGHT JOIN
+		$menuObj = $this->Articles->find('all', [
+			'fields' => ['title', 'slug', 'SystemPages.name'],
+			'conditions' => ['SystemPages.article_id = Articles.id'],
+			'contain' => ['SystemPages']
+		]);
+		if (NAV_MENU_CACHE) {
+			$menuObj->cache('nav_menu', '1day');
+		}
+		$menuObj = $menuObj->toArray();
+		foreach ($menuObj as $k => $menuItem) {
+			if (is_object($menuItem)) {
+				$menu[$menuItem->system_page->name] = ['title' => $menuItem->title, 'slug' => $menuItem->slug];
+			}
+		}
+		return $menu;
+	}
+
 }

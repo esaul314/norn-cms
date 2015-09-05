@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * SystemPages Controller
@@ -10,6 +11,12 @@ use App\Controller\AppController;
  */
 class SystemPagesController extends AppController
 {
+
+
+	public function beforeFilter(Event $event) {
+		parent::beforeFilter($event);
+		$this->set('skipNav', true);
+	}
 
     /**
      * Index method
@@ -72,6 +79,9 @@ class SystemPagesController extends AppController
      */
     public function edit($id = null)
     {
+		if (!$id) {
+			 return $this->redirect(['action' => 'index']);
+		}
         $systemPage = $this->SystemPages->get($id, [
             'contain' => []
         ]);

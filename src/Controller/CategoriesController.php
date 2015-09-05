@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Categories Controller
@@ -10,6 +11,22 @@ use App\Controller\AppController;
  */
 class CategoriesController extends AppController
 {
+
+	public function isAuthorized($user) {
+		if ($user['role'] != 'admin') {
+			return false;
+		}
+		return parent::isAuthorized($user);
+	}
+
+
+
+	public function beforeFilter(Event $event) {
+		parent::beforeFilter($event);
+		$this->loadComponent('Util');
+		$menu = $this->Util->navMenu(true);
+		$this->set('menu', $menu);
+	}
 
     /**
      * Index method

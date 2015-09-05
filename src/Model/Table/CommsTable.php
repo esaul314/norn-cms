@@ -1,13 +1,20 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\User;
+use App\Model\Entity\Comms;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
-class UsersTable extends Table {
+/**
+ * Comms Model
+ *
+ * @property \Cake\ORM\Association\BelongsTo $CommsStatuses
+ * @property \Cake\ORM\Association\BelongsTo $Users
+ */
+class CommsTable extends Table
+{
 
     /**
      * Initialize method
@@ -19,17 +26,19 @@ class UsersTable extends Table {
     {
         parent::initialize($config);
 
-        $this->table('users');
-        $this->displayField('name');
+        $this->table('comms');
+        $this->displayField('id');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('Articles', [
-            'foreignKey' => 'user_id'
+        $this->belongsTo('CommsStatuses', [
+            'foreignKey' => 'comms_status_id',
+            'joinType' => 'INNER'
         ]);
-        $this->hasMany('Comms', [
-            'foreignKey' => 'user_id'
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+            'joinType' => 'INNER'
         ]);
     }
 
@@ -46,26 +55,20 @@ class UsersTable extends Table {
             ->allowEmpty('id', 'create');
 
         $validator
-            ->allowEmpty('username');
+            ->requirePresence('dest', 'create')
+            ->notEmpty('dest');
 
         $validator
-            ->requirePresence('name', 'create')
-            ->notEmpty('name');
+			->add('subject', [
+				'maxLength' => ['rule' => ['maxLength', 64]]
+			])
+            ->requirePresence('subject', 'create')
+            ->notEmpty('subject');
 
         $validator
-            ->add('email', 'valid', ['rule' => 'email', 'deep' => true])
-            ->requirePresence('email', 'create')
-            ->notEmpty('email');
-
-        $validator //TODO: create rule, decide if it's even necessary
-            ->requirePresence('phone', 'create')
-            ->notEmpty('phone');
-
-        $validator
-            ->allowEmpty('password');
-
-        $validator
-            ->allowEmpty('role');
+			->add('body', 'length', ['rule' => ['maxLength', 500]])
+            ->requirePresence('body', 'create')
+            ->notEmpty('body');
 
         return $validator;
     }
@@ -79,9 +82,8 @@ class UsersTable extends Table {
      */
     public function buildRules(RulesChecker $rules)
     {
-		$rules->add($rules->isUnique(['username']));
-		//Same email should be allowed in contact form
-        //$rules->add($rules->isUnique(['email']));
+        $rules->add($rules->existsIn(['comms_status_id'], 'CommsStatuses'));
+        $rules->add($rules->existsIn(['user_id'], 'Users'));
         return $rules;
     }
 }

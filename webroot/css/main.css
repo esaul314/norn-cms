@@ -66,6 +66,18 @@ p, .post {
 	font-weight: bold;
 }*/
 
+.row p{
+	margin: 10px 3px !important;
+}
+
+.padTop10 {
+	padding-top: 10px;
+}
+
+.padTop30 {
+	padding-top: 30px;
+}
+
 .smaller-text {
 	font-size: 85%;
 }

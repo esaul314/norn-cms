@@ -53,6 +53,9 @@ use Cake\Routing\DispatcherFactory;
 use Cake\Utility\Inflector;
 use Cake\Utility\Security;
 
+use App\Error\AppError;
+
+
 /**
  * Read configuration file and inject configuration into various
  * CakePHP classes.
@@ -106,7 +109,8 @@ $isCli = php_sapi_name() === 'cli';
 if ($isCli) {
     (new ConsoleErrorHandler(Configure::read('Error')))->register();
 } else {
-    (new ErrorHandler(Configure::read('Error')))->register();
+	(new AppError(Configure::read('Error')))->register();
+    //(new ErrorHandler(Configure::read('Error')))->register();
 }
 
 // Include the CLI bootstrap overrides.
@@ -160,17 +164,6 @@ Request::addDetector('tablet', function ($request) {
 });
 
 /**
- * Custom Inflector rules, can be set to correctly pluralize or singularize
- * table, model, controller names or whatever other string is passed to the
- * inflection functions.
- *
- * Inflector::rules('plural', ['/^(inflect)or$/i' => '\1ables']);
- * Inflector::rules('irregular' => ['red' => 'redlings']);
- * Inflector::rules('uninflected', ['dontinflectme']);
- * Inflector::rules('transliteration', ['/å/' => 'aa']);
- */
-
-/**
  * Plugins need to be loaded manually, you can either load them one by one or all of them in a single call
  * Uncomment one of the lines below, as you need. make sure you read the documentation on Plugin to use more
  * advanced ways of loading plugins
@@ -194,9 +187,12 @@ if (Configure::read('debug')) {
 DispatcherFactory::add('Asset');
 DispatcherFactory::add('Routing');
 DispatcherFactory::add('ControllerFactory');
+//DispatcherFactory::add('Cache.Cache');
 
 define('COMPANY', 'Vivamus Libero');
 define('COMPANY_LOGO', 'logo.png');
+define('COMPANY_PHONE', '1234567');
+define('COMPANY_EMAIL', 'info@xxx.xxx.x');
 define('COMPANY_LOGO_TEXT', 'Quisque egestas efficitur magna, in congue velit congue semper.');
 define('COMPANY_SLOGAN', 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.');
 define('COMPANY_SLOGAN_2', 'Lorem Ipsum');
@@ -204,4 +200,35 @@ define('COMPANY_SLOGAN_2', 'Lorem Ipsum');
 define('ARTICLE_STATUS_ACTIVE', 1);
 define('ARTICLE_STATUS_INACTIVE', 2);
 define('ARTICLE_TYPE_SYSTEM', 4);
-Plugin::load('Bootstrap3');
+
+define('ARTICLE_TIMESTAMP', false);
+define('ARTICLE_SHOW_RELATED', true);
+
+
+define('NAV_MENU_CACHE', false);
+
+define('COMM_NEW', 1);
+define('COMM_PENDING', 2);
+define('COMM_COMPLETED', 3);
+define('COMM_DELAYED', 4);
+
+define('WEBSITE_DOMAIN', 'thiswebsite.com');
+
+define('GA_SITE_ID', strpos(env('SERVER_SOFTWARE'), 'PHP') ? 'UA-XXXXXXXX' : 'UA-YYYYYYYY-Y');
+
+//Plugin::load('Cache');
+Plugin::load('Bootstrap');
+Plugin::load('AssetCompress', ['bootstrap' => true]);
+
+/**
+ * Custom Inflector rules, can be set to correctly pluralize or singularize
+ * table, model, controller names or whatever other string is passed to the
+ * inflection functions.
+ *
+ * Inflector::rules('plural', ['/^(inflect)or$/i' => '\1ables']);
+ * Inflector::rules('irregular' => ['red' => 'redlings']);
+ * Inflector::rules('uninflected', ['dontinflectme']);
+ * Inflector::rules('transliteration', ['/å/' => 'aa']);
+ */
+
+ Inflector::rules('uninflected', ['comms']);
