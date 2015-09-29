@@ -10,7 +10,7 @@ Most web deployments such as CRMs, shopping carts, CMS and blog engines, etc. at
 offering an easy on the eye, easy to install turnkey solution that would run out of the box on almost any 
 modern server configuration.
 
-This "one web app fits all server configurations" approach, while successful, overlooks a growing area of
+This "one-web-app-fits-all-server-configurations" approach, while successful, overlooks a growing area of
 resource constrained setups such as embedded devices and VPS. NornCMS is **not device-agnostic**, and that is 
 where it gets its edge. 
 
@@ -21,6 +21,7 @@ anything the programmers may throw at it.
 
 Because of this disconnect between programmers and network admins, most pieces of software tend to falter 
 in the following:
+
 1. not integrated with other tools;
 2. not aware of resources or lack thereof;
 3. assume that hardware is cheap and expendable;
@@ -47,5 +48,5 @@ This is coming up soon. As you may imagine this is the longest and the most comp
 
 ## NornCMS in the wild
 
-http://panoramicawareness.com
-http://vikinglaws.mx
+1. http://panoramicawareness.com
+2. http://vikinglaws.mx
