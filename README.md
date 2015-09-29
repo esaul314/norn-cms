@@ -1,26 +1,51 @@
-# CakePHP Application Skeleton
+# NornCMS - a very fast CMS
 
-[![Build Status](https://api.travis-ci.org/cakephp/app.png)](https://travis-ci.org/cakephp/app)
-[![License](https://poser.pugx.org/cakephp/app/license.svg)](https://packagist.org/packages/cakephp/app)
-
-A skeleton for creating applications with [CakePHP](http://cakephp.org) 3.0.
+This document introduces NornCMS, and makes an effort to summarize the instructions on deploying it on a specially configured server.
 
 This is an unstable repository and should be treated as an alpha.
 
-## Installation
+## Introduction
 
-1. Download [Composer](http://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist -s dev cakephp/app [app_name]`.
+Most web deployments such as CRMs, shopping carts, CMS and blog engines, etc. attract and convert users by 
+offering an easy on the eye, easy to install turnkey solution that would run out of the box on almost any 
+modern server configuration.
 
-If Composer is installed globally, run
-```bash
-composer create-project --prefer-dist -s dev cakephp/app [app_name]
-```
+This "one web app fits all server configurations" approach, while successful, overlooks a growing area of
+resource constrained setups such as embedded devices and VPS. NornCMS is **not device-agnostic**, and that is 
+where it gets its edge. 
 
-You should now be able to visit the path to where you installed the app and see
-the setup traffic lights.
+In most organizations, programmers and network admins do not confer with each other much, each often taking
+pride in not knowing nor caring about the other's work. Hardware agnostic code is, in fact, often a source 
+of pride for a programmer, just the same as a network admin would be proud to have an OS that can handle
+anything the programmers may throw at it.
+
+Because of this disconnect between programmers and network admins, most pieces of software tend to falter 
+in the following:
+1. not integrated with other tools;
+2. not aware of resources or lack thereof;
+3. assume that hardware is cheap and expendable;
+
+## What makes NornCMS so fast
+
+In most settings access to disk I/O is expensive, often prohibitively slow. NornCMS minimizes I/Os by 
+integrating a multi-layered cache, and keeping all data in memory, even if the data have to be compressed.
+
+Making use of ```/dev/shm``` RAM disk takes care of whatever reads/writes were not covered by ```memcached``` and
+```MariaDB``` caching settings.
+
+A rather common setting in the ```nginx``` configuration lets us serve up cached content without processing **any** PHP
+code thus making the CMS even faster.
+
+Last, but not least, NornCMS integrates with the reverse proxy ```varnish``` in the way that offsets most of the 
+load onto the ridiculously fast proxy, with the CMS itself only having to process very infrequent POSTs and rare 
+cache-refresh requests.
 
 ## Configuration
 
-Read and edit `config/app.php` and setup the 'Datasources' and any other
-configuration relevant for your application.
+This is coming up soon. As you may imagine this is the longest and the most complex part.
+
+
+## NornCMS in the wild
+
+http://panoramicawareness.com
+http://vikinglaws.mx
