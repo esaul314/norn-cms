@@ -77,7 +77,7 @@ Transfer rate:          546.72 [Kbytes/sec] received
 
 Note that according to the above, we can serve 46 requests in just 1 second, processing 10 requests in parallel. That's a 
 regular HTML5 page on an OpenVZ VPS. Let's round it up to 50, and ask this - how many companies with a $19/year webserver budget
-really need to service 50 pages per second? Even so, we can easily double that if we introduced another VPS (this one at $6/year)
+really need to service 50 pages per second? Even so, we can more than double that if we introduced another VPS (this one at $6/year)
 to serve as a load balancer and a cache server.
 
 ## NornCMS in the wild
