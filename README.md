@@ -84,3 +84,4 @@ to serve as a load balancer and a cache server.
 
 1. http://panoramicawareness.com
 2. http://vikinglaws.mx
+3. The code for NornCMS served as the conceptual foundation for http://opim.ca
